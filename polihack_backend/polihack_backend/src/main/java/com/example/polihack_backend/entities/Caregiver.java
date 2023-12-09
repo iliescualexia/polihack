@@ -19,4 +19,5 @@ public class Caregiver {
     private String categories;
     private String description;
     private Integer hourlyWage;
+    private String profilePictureUrl;
 }

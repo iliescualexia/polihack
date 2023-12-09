@@ -19,11 +19,14 @@ public class UserServiceImpl implements UserService {
     protected UserMapper userMapper;
     @Override
     public User save(User user) {
-        if(user!=null&& userRepository.findByEmail(user.getEmail()).isEmpty()){
+        User user1 = userRepository.findByEmail(user.getEmail()).orElse(null);
+        if (user != null && user1==null) {
             return userRepository.save(user);
+        } else {
+            return null; // User with the same email already exists
         }
-        return null;
     }
+
 
     @Override
     public User update(User user) {

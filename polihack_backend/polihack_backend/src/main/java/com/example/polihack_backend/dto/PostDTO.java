@@ -15,7 +15,7 @@ import java.util.List;
 public class PostDTO {
     private String postIdentifier;
     private String email;
-    private List<Categories> categories;
+    private Categories category;
     private String description;
     private Role postType;
 }

@@ -26,7 +26,7 @@ public class CaregiverMapper implements Mapper<CaregiverDTO, Caregiver> {
     @Override
     public Caregiver toEntity(CaregiverDTO caregiverDTO) {
         Caregiver caregiver = new Caregiver();
-        caregiver = caregiverRepository.findByEmail(caregiver.getEmail()).orElse(null);
+        BeanUtils.copyProperties(caregiverDTO,caregiver);
         if(caregiverDTO.getCategories()!=null && caregiver != null){
             caregiver.setCategories(generateCategoriesString(caregiverDTO.getCategories()));
         }

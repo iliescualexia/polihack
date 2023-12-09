@@ -1,5 +1,6 @@
 package com.example.polihack_backend.entities;
 
+import com.example.polihack_backend.states.Categories;
 import com.example.polihack_backend.states.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +17,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String email;
-    private String categories;
+    @Enumerated(EnumType.STRING)
+    private Categories category;
     private String description;
     @Enumerated(EnumType.STRING)
     private Role postType;

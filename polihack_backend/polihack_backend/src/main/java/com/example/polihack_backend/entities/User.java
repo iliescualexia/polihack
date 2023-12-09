@@ -25,4 +25,7 @@ public class User {
     private Role role;
     @Enumerated(EnumType.STRING)
     private Status status;
+    private String country;
+    private String county;
+    private String city;
 }

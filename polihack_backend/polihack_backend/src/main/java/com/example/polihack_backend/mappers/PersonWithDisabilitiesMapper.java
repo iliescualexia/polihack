@@ -24,9 +24,11 @@ public class PersonWithDisabilitiesMapper implements Mapper<PersonWithDisabiliti
     public PersonWithDisabilities toEntity ( PersonWithDisabilitiesDTO personWithDisabilitiesDTO ) {
         PersonWithDisabilities personWithDisabilities = new PersonWithDisabilities ();
         BeanUtils.copyProperties ( personWithDisabilitiesDTO, personWithDisabilities );
+
         if ( personWithDisabilities.getCategories () != null && personWithDisabilities != null) {
             personWithDisabilities.setCategories ( generateCategoriesString ( personWithDisabilitiesDTO.getCategories () ) );
         }
+
         return personWithDisabilities;
     }
 
