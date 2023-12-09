@@ -11,7 +11,7 @@ public interface UserService {
     User update(User user);
     User remove(User user);
     List<User> findAll();
-    User findByUsername(String username);
+    User findByEmail(String email);
     User findById(long id);
     User toEntity(UserDTO userDTO);
     UserDTO toDTO(User user);

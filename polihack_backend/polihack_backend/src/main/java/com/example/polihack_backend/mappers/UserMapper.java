@@ -31,7 +31,7 @@ public class UserMapper implements Mapper<UserDTO, User> {
             user.setPassword(passwordAuthentication.hash(user.getPassword().toCharArray()));
         }
         else { // must be taken from db
-            User dbUser = userRepository.findByUsername(userDTO.getUsername()).orElse(null);
+            User dbUser = userRepository.findByEmail(userDTO.getEmail()).orElse(null);
             if(dbUser == null) return null;
             user.setPassword(dbUser.getPassword());
         }

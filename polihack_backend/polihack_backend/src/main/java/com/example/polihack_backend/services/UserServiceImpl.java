@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     protected UserMapper userMapper;
     @Override
     public User save(User user) {
-        if(user!=null&& userRepository.findByUsername(user.getUsername()).isEmpty()){
+        if(user!=null&& userRepository.findByEmail(user.getEmail()).isEmpty()){
             return userRepository.save(user);
         }
         return null;
@@ -28,12 +28,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(User user) {
         ///username is unique
-        User fromDb = userRepository.findByUsername(user.getUsername()).orElse(null);
+        User fromDb = userRepository.findByEmail(user.getEmail()).orElse(null);
         if(fromDb==null){
             return null;
         }
         ///user can't be modified
-        if(fromDb.getUsername().equals(user.getUsername())){
+        if(fromDb.getEmail().equals(user.getEmail())){
             BeanUtils.copyProperties(user,fromDb);
             return userRepository.save(fromDb);
         }
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User remove(User user) {
-        User fromDb = userRepository.findByUsername(user.getUsername()).orElse(null);
+        User fromDb = userRepository.findByEmail(user.getEmail()).orElse(null);
         if(fromDb == null){
             return null;
         }
@@ -56,9 +56,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElse(null);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
     }
+
 
     @Override
     public User findById(long id) {
