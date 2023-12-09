@@ -5,6 +5,8 @@ import com.example.polihack_backend.entities.Notification;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class NotificationMapper implements Mapper<NotificationDTO, Notification>{
     @Override
@@ -16,6 +18,11 @@ public class NotificationMapper implements Mapper<NotificationDTO, Notification>
 
     @Override
     public Notification toEntity(NotificationDTO notificationDTO) {
-        return null;
+        Notification notification = new Notification();
+        BeanUtils.copyProperties(notificationDTO,notification);
+        if(notification.getNotificationIdentifier() == null){
+            notification.setNotificationIdentifier(UUID.randomUUID().toString());
+        }
+        return notification;
     }
 }

@@ -82,6 +82,6 @@ public class NotificationServiceImpl implements NotificationService{
 
     @Override
     public NotificationDTO toDTO(Notification notification) {
-        return notificationMapper.toDTO(post);
+        return notificationMapper.toDTO(notification);
     }
 }
