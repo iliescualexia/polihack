@@ -14,8 +14,8 @@ public interface NotificationService {
     Notification remove(Notification notification);
     List<Notification> findAll();
     Notification findByNotificationIdentifier(String identifier);
-    List<Notification> findByReceiver(String email);
-    List<Notification> findBySender(String email);
+    List<Notification> findByReceiverEmail(String email);
+    List<Notification> findBySenderEmail(String email);
     Notification findById(long id);
     Notification toEntity(NotificationDTO notificationDTO);
     NotificationDTO toDTO(Notification notification);

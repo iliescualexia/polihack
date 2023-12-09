@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface NotificationRepository extends JpaRepository <Notification, Long>{
     Optional<Notification> findById(long id);
-    Optional<List<Notification>> findByReceiver(String email);
-    Optional<List<Notification>> findBySender(String email);
+    Optional<List<Notification>> findByReceiverEmail(String email);
+    Optional<List<Notification>> findBySenderEmail(String email);
     Optional<Notification> findByNotificationIdentifier(String notificationIdentifier);
 }

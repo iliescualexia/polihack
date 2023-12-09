@@ -27,7 +27,7 @@ public class CaregiverMapper implements Mapper<CaregiverDTO, Caregiver> {
     public Caregiver toEntity(CaregiverDTO caregiverDTO) {
         Caregiver caregiver = new Caregiver();
         caregiver = caregiverRepository.findByEmail(caregiver.getEmail()).orElse(null);
-        if(caregiverDTO.getCategories()!=null){
+        if(caregiverDTO.getCategories()!=null && caregiver != null){
             caregiver.setCategories(generateCategoriesString(caregiverDTO.getCategories()));
         }
         return caregiver;

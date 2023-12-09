@@ -61,13 +61,13 @@ public class NotificationServiceImpl implements NotificationService{
     }
 
     @Override
-    public List<Notification> findByReceiver(String email) {
-        return notificationRepository.findByReceiver(email).orElse(null);
+    public List<Notification> findByReceiverEmail(String email) {
+        return notificationRepository.findByReceiverEmail(email).orElse(null);
     }
 
     @Override
-    public List<Notification> findBySender(String email) {
-        return notificationRepository.findBySender(email).orElse(null);
+    public List<Notification> findBySenderEmail(String email) {
+        return notificationRepository.findBySenderEmail(email).orElse(null);
     }
 
     @Override
