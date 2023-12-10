@@ -16,8 +16,7 @@ public class Caregiver {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String email;
-    private String categories;
     private String description;
-    private Integer hourlyWage;
-    private String profilePictureUrl;
+    @Lob
+    private byte[] profilePictureData;
 }

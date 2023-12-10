@@ -3,13 +3,16 @@ package com.example.polihack_backend.services;
 import com.example.polihack_backend.dto.PersonWithDisabilitiesDTO;
 import com.example.polihack_backend.entities.Caregiver;
 import com.example.polihack_backend.entities.PersonWithDisabilities;
+import com.example.polihack_backend.entities.Post;
 import com.example.polihack_backend.mappers.PersonWithDisabilitiesMapper;
 import com.example.polihack_backend.repositories.PersonWithDisabilitiesRepository;
+import com.example.polihack_backend.repositories.PostRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonWIthDisabilitiesServiceImpl implements PersonWithDisabilitiesService{
@@ -17,7 +20,6 @@ public class PersonWIthDisabilitiesServiceImpl implements PersonWithDisabilities
     protected PersonWithDisabilitiesRepository personWithDisabilitiesRepository;
     @Autowired
     protected PersonWithDisabilitiesMapper personWithDisabilitiesMapper;
-
     @Override
     public PersonWithDisabilities save(PersonWithDisabilities personWithDisabilities) {
         if(personWithDisabilities!=null && personWithDisabilitiesRepository.findByEmail(personWithDisabilities.getEmail()).isEmpty()){
@@ -74,5 +76,6 @@ public class PersonWIthDisabilitiesServiceImpl implements PersonWithDisabilities
     public PersonWithDisabilitiesDTO toDTO(PersonWithDisabilities personWithDisabilities) {
         return personWithDisabilitiesMapper.toDTO(personWithDisabilities);
     }
+
 
 }

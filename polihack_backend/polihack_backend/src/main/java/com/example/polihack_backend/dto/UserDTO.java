@@ -18,4 +18,7 @@ public class UserDTO {
     private String lastName;
     private Role role;
     private Status status;
+    private String country;
+    private String county;
+    private String city;
 }

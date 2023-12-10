@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 @Getter
@@ -20,7 +21,10 @@ public class RegisterCaregiverDTO {
     private String lastName;
     private Role role;
     private Status status;
-    private List<Categories> categories;
     private String description;
     private Integer hourlyWage;
+    private String country;
+    private String county;
+    private String city;
+    private MultipartFile profilePicture; ///CAZIER
 }

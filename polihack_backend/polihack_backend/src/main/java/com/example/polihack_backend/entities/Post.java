@@ -24,7 +24,7 @@ public class Post {
     private Role postType;
     @Column(name = "post_identifier")
     private String postIdentifier;
-
+    private Integer hourlyWage;
 
 
 }

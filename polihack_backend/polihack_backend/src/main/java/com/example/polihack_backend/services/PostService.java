@@ -3,6 +3,7 @@ package com.example.polihack_backend.services;
 import com.example.polihack_backend.dto.NotificationDTO;
 import com.example.polihack_backend.dto.PostDTO;
 import com.example.polihack_backend.entities.Notification;
+import com.example.polihack_backend.entities.PersonWithDisabilities;
 import com.example.polihack_backend.entities.Post;
 import com.example.polihack_backend.entities.User;
 
@@ -18,4 +19,5 @@ public interface PostService {
     Post findById(long id);
     Post toEntity(PostDTO postDTO);
     PostDTO toDTO(Post post);
+    List<Post> getPostsMatched(PersonWithDisabilities personWithDisabilities);
 }

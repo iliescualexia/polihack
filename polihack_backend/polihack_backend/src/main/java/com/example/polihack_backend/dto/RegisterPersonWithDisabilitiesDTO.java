@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,4 +24,8 @@ public class RegisterPersonWithDisabilitiesDTO {
     private String lastName;
     private Role role;
     private Status status;
+    private String country;
+    private String county;
+    private String city;
+
 }

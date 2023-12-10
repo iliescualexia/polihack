@@ -2,6 +2,7 @@ package com.example.polihack_backend.services;
 
 import com.example.polihack_backend.dto.PostDTO;
 import com.example.polihack_backend.entities.Caregiver;
+import com.example.polihack_backend.entities.PersonWithDisabilities;
 import com.example.polihack_backend.entities.Post;
 import com.example.polihack_backend.entities.User;
 import com.example.polihack_backend.mappers.PostMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -80,5 +82,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDTO toDTO(Post post) {
         return postMapper.toDTO(post);
+    }
+    @Override
+    public List<Post> getPostsMatched (PersonWithDisabilities personWithDisabilities ) {
+        List<Post> list = postRepository.findAll();
+
+        return list.stream().filter( post -> personWithDisabilities.getCategories ().contains(post.getCategory ().name ()) ).collect( Collectors.toList());
     }
 }

@@ -14,7 +14,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("api/register")
@@ -26,8 +28,9 @@ public class RegisterController {
     @Autowired
     PersonWithDisabilitiesService personWithDisabilitiesService;
 
-    @PostMapping("/caregiver")
-    public @ResponseBody ResponseEntity<OperationResponse> saveCaregiver(@RequestBody RegisterCaregiverDTO registerCaregiverDTO){
+    @PostMapping("/caretaker")
+    @Transactional
+    public @ResponseBody ResponseEntity<OperationResponse> saveCaregiver(@ModelAttribute RegisterCaregiverDTO registerCaregiverDTO) {
         OperationResponse operationResponse = new OperationResponse();
         UserDTO userDTO = new UserDTO();
         CaregiverDTO caregiverDTO = new CaregiverDTO();

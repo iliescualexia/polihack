@@ -1,7 +1,10 @@
 package com.example.polihack_backend.controllers;
 
 import com.example.polihack_backend.dto.PostDTO;
+import com.example.polihack_backend.dto.UserDTO;
+import com.example.polihack_backend.entities.PersonWithDisabilities;
 import com.example.polihack_backend.entities.Post;
+import com.example.polihack_backend.services.PersonWithDisabilitiesService;
 import com.example.polihack_backend.services.PostService;
 import com.example.polihack_backend.validation.ErrorInfo;
 import com.example.polihack_backend.validation.ErrorType;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     @Autowired
     PostService postService;
+    @Autowired
+    PersonWithDisabilitiesService personWithDisabilitiesService;
     @PostMapping("/save")
     public @ResponseBody ResponseEntity<OperationResponse> savePost(@RequestBody PostDTO postDTO){
         OperationResponse operationResponse = new OperationResponse();
@@ -40,5 +45,23 @@ public class PostController {
         }
         return new ResponseEntity<>(operationResponse, HttpStatus.OK);
     }
-    
+    @GetMapping("/findAll")
+    public @ResponseBody ResponseEntity<OperationResponse>  findAllPosts(){
+        OperationResponse operationResponse = new OperationResponse();
+        operationResponse.setDataObject(postService.findAll());
+        return new ResponseEntity<>(operationResponse, HttpStatus.OK);
+    }
+    @GetMapping("/findAllForUser")
+    public @ResponseBody ResponseEntity<OperationResponse>  findAllPostsForUser(@RequestBody UserDTO userDTO){
+        OperationResponse operationResponse = new OperationResponse();
+        PersonWithDisabilities personWithDisabilities = personWithDisabilitiesService.findByEmail(userDTO.getEmail());
+        if(personWithDisabilities != null){
+            operationResponse.setDataObject(postService.getPostsMatched(personWithDisabilities));
+        }
+        else{
+            operationResponse.addError(new ErrorInfo(ErrorType.NOT_FOUND_ERROR, "User doesn't exist"));
+        }
+
+        return new ResponseEntity<>(operationResponse, HttpStatus.OK);
+    }
 }

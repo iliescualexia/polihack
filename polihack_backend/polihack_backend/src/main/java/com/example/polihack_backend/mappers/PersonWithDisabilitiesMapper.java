@@ -25,7 +25,7 @@ public class PersonWithDisabilitiesMapper implements Mapper<PersonWithDisabiliti
         PersonWithDisabilities personWithDisabilities = new PersonWithDisabilities ();
         BeanUtils.copyProperties ( personWithDisabilitiesDTO, personWithDisabilities );
 
-        if ( personWithDisabilities.getCategories () != null && personWithDisabilities != null) {
+        if ( personWithDisabilitiesDTO.getCategories () != null && personWithDisabilities != null) {
             personWithDisabilities.setCategories ( generateCategoriesString ( personWithDisabilitiesDTO.getCategories () ) );
         }
 

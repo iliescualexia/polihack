@@ -18,4 +18,5 @@ public class PostDTO {
     private Categories category;
     private String description;
     private Role postType;
+    private Integer hourlyWage;
 }

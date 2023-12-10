@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,8 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 public class CaregiverDTO {
     private String email;
-    private List<Categories> categories;
     private String description;
-    private Integer hourlyWage;
-    private String profilePictureUrl;
+    private MultipartFile profilePicture;
 }
